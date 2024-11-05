@@ -14,6 +14,11 @@ config/name="Melhor_morte"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=3
+window/stretch/scale=4.0
+
 [input]
 
 right={
