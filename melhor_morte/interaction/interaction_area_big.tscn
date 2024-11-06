@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv7pdg8kgbcbt"]
+
+[sub_resource type="GDScript" id="GDScript_5gvj6"]
+script/source = "extends Area2D
+class_name InteractionArea
+
+@export var action_name: String = \"interact\"
+@export var interact_label = \"none\"
+@export var interact_type = \"none\"
+@export var interact_value = \"none\"
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qn43k"]
+radius = 28.0713
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = SubResource("GDScript_5gvj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qn43k")

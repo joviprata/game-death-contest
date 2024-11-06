@@ -1,17 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://dsie3gcn2wb4t"]
+[gd_scene load_steps=30 format=3 uid="uid://dsie3gcn2wb4t"]
 
-[ext_resource type="Texture2D" uid="uid://cu4gswsppd462" path="res://arte/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_0vgn5"]
 [ext_resource type="Script" path="res://personagens/main_character.gd" id="1_5lhcj"]
+[ext_resource type="Texture2D" uid="uid://co5thcbuo0fuk" path="res://personagens/Player 1 Spritesheet.png" id="2_3dsva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jl56"]
-size = Vector2(10, 7)
+size = Vector2(14, 11)
 
 [sub_resource type="Animation" id="Animation_cv377"]
 length = 0.001
 
 [sub_resource type="Animation" id="Animation_lhb55"]
 resource_name = "idle_down"
-length = 0.4
 loop_mode = 1
 step = 0.033
 tracks/0/type = "value"
@@ -21,15 +20,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_6geew"]
 resource_name = "idle_left"
-length = 0.38
 loop_mode = 1
 step = 0.033
 tracks/0/type = "value"
@@ -39,15 +37,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [8, 9]
+"values": [8, 9, 8]
 }
 
 [sub_resource type="Animation" id="Animation_55pxp"]
 resource_name = "idle_right"
-length = 0.43
 loop_mode = 1
 step = 0.033
 tracks/0/type = "value"
@@ -57,15 +54,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.233333, 0.462),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [12, 13]
+"values": [12, 13, 12]
 }
 
 [sub_resource type="Animation" id="Animation_oh6er"]
 resource_name = "idle_up"
-length = 0.4
 loop_mode = 1
 step = 0.0333
 tracks/0/type = "value"
@@ -75,10 +71,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.233333, 0.4329),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [4, 5]
+"values": [4, 5, 4]
 }
 
 [sub_resource type="Animation" id="Animation_s5x4x"]
@@ -231,17 +227,31 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_6kcq1")
 states/Walk/position = Vector2(582, 138)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hdaa3"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_roq1f"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_vftaa")]
 
+[sub_resource type="GDScript" id="GDScript_5gvj6"]
+script/source = "extends Area2D
+class_name InteractionArea
+
+@export var action_name: String = \"interact\"
+@export var interact_label = \"none\"
+@export var interact_type = \"none\"
+@export var interact_value = \"none\"
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqv1m"]
+radius = 28.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_5lhcj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
-texture = ExtResource("1_0vgn5")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_3dsva")
 hframes = 4
 vframes = 4
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 4.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_5jl56")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -255,3 +265,30 @@ advance_expression_base_node = NodePath("../AnimationPlayer")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.00161028, -1.2236)
 parameters/Walk/blend_position = Vector2(-0.00322062, 0.984772)
+
+[node name="InteractionComponent" type="Node2D" parent="."]
+z_index = 1
+
+[node name="InteractionArea" type="Area2D" parent="InteractionComponent"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = SubResource("GDScript_5gvj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/InteractionArea"]
+shape = SubResource("CircleShape2D_uqv1m")
+
+[node name="InteractLabel" type="Label" parent="InteractionComponent"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -30.0
+offset_right = 69.0
+offset_bottom = -7.0
+grow_horizontal = 2
+scale = Vector2(0.6, 0.6)
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="InteractionComponent/InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionComponent/InteractionArea" to="." method="_on_interaction_area_area_exited"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://ba8vrexv3m2k7"]
+[gd_scene load_steps=6 format=4 uid="uid://ba8vrexv3m2k7"]
 
 [ext_resource type="PackedScene" uid="uid://dsie3gcn2wb4t" path="res://personagens/main_character.tscn" id="1_4melu"]
 [ext_resource type="Texture2D" uid="uid://220gfemy2v5u" path="res://arte/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="2_7senf"]
 [ext_resource type="PackedScene" uid="uid://64vkfvdv46pu" path="res://objetos/bau.tscn" id="3_a14e4"]
-[ext_resource type="PackedScene" uid="uid://b2v6r33215ofa" path="res://interaction/interaction_area/interaction_area.tscn" id="3_u0id5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1lch"]
 texture = ExtResource("2_7senf")
@@ -102,14 +101,14 @@ position = Vector2(160, 194)
 [node name="Chest3" parent="." instance=ExtResource("3_a14e4")]
 position = Vector2(340, 208)
 
+[node name="Chest6" parent="." instance=ExtResource("3_a14e4")]
+
 [node name="Chest5" parent="." instance=ExtResource("3_a14e4")]
 position = Vector2(233, 198)
 
-[node name="InteractionArea" parent="." instance=ExtResource("3_u0id5")]
-
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_4melu")]
 position = Vector2(146, 123)
-collision_mask = 2
+collision_mask = 3
 starting_direction = Vector2(0, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]

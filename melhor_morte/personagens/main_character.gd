@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed :float = 100
+@export var move_speed :float = 200
 
 # parameters/idle/blend_position
 
@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 @export var starting_direction :Vector2 = Vector2(0, -1)
 
+@onready var all_interactions = []
+@onready var interact_label = $InteractionComponent/InteractLabel
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -37,3 +39,23 @@ func pick_new_state():
 		state_machine.travel("Walk", false)
 	else:
 		state_machine.travel("Idle", false)
+
+
+# funções de interação
+func _on_interaction_area_area_entered(area: Area2D) -> void:
+	all_interactions.insert(0, area) 
+	print("entrei")
+	update_interactions()
+
+
+func _on_interaction_area_area_exited(area: Area2D) -> void:
+	all_interactions.erase(area) 
+	print("sai")
+	update_interactions()
+	
+func update_interactions():
+	if all_interactions:
+		interact_label.text = all_interactions[0].interact_label
+		print(all_interactions[0].interact_label)
+	else:
+		interact_label.text = ""

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://64vkfvdv46pu"]
+[gd_scene load_steps=4 format=3 uid="uid://64vkfvdv46pu"]
 
 [ext_resource type="Texture2D" uid="uid://bp8g7s72dvh3i" path="res://arte/Sprout Lands - Sprites - Basic pack/Objects/Chest.png" id="1_iggts"]
+[ext_resource type="PackedScene" uid="uid://sbel2hl0poon" path="res://interaction/interaction_area_small.tscn" id="2_j1rpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bo87"]
 size = Vector2(14, 8)
@@ -15,3 +16,8 @@ vframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_0bo87")
+
+[node name="InteractionArea2" parent="." instance=ExtResource("2_j1rpo")]
+interact_label = "Press [e]"
+interact_type = "abrir"
+interact_value = "abriu!"
