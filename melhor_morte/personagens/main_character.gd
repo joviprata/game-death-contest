@@ -12,6 +12,11 @@ extends CharacterBody2D
 @onready var all_interactions = []
 @onready var interact_label = $InteractionComponent/InteractLabel
 
+@export var inv: Inv
+@onready var sprite = $Sprite2D
+var on_interaction_area = false
+var morto = false
+
 func _ready():
 	update_animation_parameters(starting_direction)
 
@@ -21,13 +26,13 @@ func _physics_process(_delta: float) -> void:
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-	
-	update_animation_parameters(input_direction)
-	
-	velocity = input_direction * move_speed
-	
-	move_and_slide()
-	pick_new_state()
+	if not morto:
+		update_animation_parameters(input_direction)
+		
+		velocity = input_direction * move_speed
+		
+		move_and_slide()
+		pick_new_state()
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
@@ -40,22 +45,33 @@ func pick_new_state():
 	else:
 		state_machine.travel("Idle", false)
 
+func _process(delta: float) -> void:
+	if Input.get_action_strength("interaction") && on_interaction_area:
+		sprite.flip_v = -1
+		morto = true
+		animation_tree.active = false
+		interact_label.text = "e morreu"
+		
 
 # funções de interação
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	all_interactions.insert(0, area) 
 	print("entrei")
+	on_interaction_area = true
 	update_interactions()
 
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	all_interactions.erase(area) 
 	print("sai")
+	on_interaction_area = false
 	update_interactions()
-	
+
+
+
 func update_interactions():
 	if all_interactions:
 		interact_label.text = all_interactions[0].interact_label
-		print(all_interactions[0].interact_label)
+		
 	else:
 		interact_label.text = ""

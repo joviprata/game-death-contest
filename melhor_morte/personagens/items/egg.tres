@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://d4djiwf33e15u"]
+
+[ext_resource type="Script" path="res://personagens/inventory/Inventory_item.gd" id="1_6qum0"]
+[ext_resource type="Texture2D" uid="uid://5rlupw3ysbtd" path="res://arte/Sprout Lands - Sprites - Basic pack/Characters/Egg_And_Nest.png" id="2_v1wc3"]
+
+[resource]
+script = ExtResource("1_6qum0")
+name = "egg"
+texture = ExtResource("2_v1wc3")

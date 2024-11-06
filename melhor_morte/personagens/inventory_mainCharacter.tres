@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://ctl8c10sxrt8m"]
+
+[ext_resource type="Script" path="res://personagens/inventory/Inventory_item.gd" id="1_ddml3"]
+[ext_resource type="Resource" uid="uid://d4djiwf33e15u" path="res://personagens/items/egg.tres" id="2_0r1ab"]
+[ext_resource type="Script" path="res://personagens/inventory/inventory.gd" id="3_hss1n"]
+
+[resource]
+script = ExtResource("3_hss1n")
+items = Array[ExtResource("1_ddml3")]([null, ExtResource("2_0r1ab"), null, null, null, null, ExtResource("2_0r1ab"), null, null, null, null, null])

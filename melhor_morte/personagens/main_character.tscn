@@ -1,7 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dsie3gcn2wb4t"]
+[gd_scene load_steps=32 format=3 uid="uid://dsie3gcn2wb4t"]
 
 [ext_resource type="Script" path="res://personagens/main_character.gd" id="1_5lhcj"]
 [ext_resource type="Texture2D" uid="uid://co5thcbuo0fuk" path="res://personagens/Player 1 Spritesheet.png" id="2_3dsva"]
+[ext_resource type="Resource" uid="uid://ctl8c10sxrt8m" path="res://personagens/inventory_mainCharacter.tres" id="2_eu1iq"]
+[ext_resource type="PackedScene" uid="uid://cypjd0ebv1awr" path="res://personagens/inventory/inv_ui.tscn" id="4_x6ymr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jl56"]
 size = Vector2(14, 11)
@@ -242,13 +244,14 @@ radius = 28.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_5lhcj")
+inv = ExtResource("2_eu1iq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_3dsva")
 hframes = 4
 vframes = 4
-frame = 5
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
@@ -289,6 +292,12 @@ offset_bottom = -7.0
 grow_horizontal = 2
 scale = Vector2(0.6, 0.6)
 horizontal_alignment = 1
+
+[node name="Inv_UI" parent="." instance=ExtResource("4_x6ymr")]
+offset_left = -54.0
+offset_top = -133.0
+offset_right = -14.0
+offset_bottom = -93.0
 
 [connection signal="area_entered" from="InteractionComponent/InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionComponent/InteractionArea" to="." method="_on_interaction_area_area_exited"]

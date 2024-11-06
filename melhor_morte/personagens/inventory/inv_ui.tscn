@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cypjd0ebv1awr"]
+
+[ext_resource type="Script" path="res://personagens/inventory/inv_ui.gd" id="1_ejb7m"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ejb7m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 113.0
