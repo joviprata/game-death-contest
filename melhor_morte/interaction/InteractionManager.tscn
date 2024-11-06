@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rpxfvtr7iadv"]
+
+[node name="InteractionManager" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.0
+offset_right = 107.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "APERTE [E] PARA INTERAGIR"
+horizontal_alignment = 1
+vertical_alignment = 1
