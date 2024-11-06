@@ -46,7 +46,7 @@ func pick_new_state():
 	else:
 		state_machine.travel("Idle", false)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.get_action_strength("interaction") && on_interaction_area:
 		sprite.flip_v = -1
 		morto = true
@@ -56,13 +56,15 @@ func _process(_delta: float) -> void:
 
 # funções de interação
 func _on_interaction_area_area_entered(area: Area2D) -> void:
-	all_interactions.insert(0, area)
+	all_interactions.insert(0, area) 
+	print("entrei")
 	on_interaction_area = true
 	update_interactions()
 
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
-	all_interactions.erase(area)
+	all_interactions.erase(area) 
+	print("sai")
 	on_interaction_area = false
 	update_interactions()
 
