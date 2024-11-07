@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d12qkmbvsuigk"]
+
+[ext_resource type="Texture2D" uid="uid://bmnwcbaplvx0f" path="res://arte/Sprout Lands - Sprites - Basic pack/Objects/prateleira_vertical.png" id="1_r0lt7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bo87"]
+size = Vector2(48, 12)
+
+[node name="prateleiraHori" type="Sprite2D"]
+light_mask = 3
+visibility_layer = 3
+z_index = 1
+scale = Vector2(1.66667, 2)
+texture = ExtResource("1_r0lt7")
+region_filter_clip_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("RectangleShape2D_0bo87")

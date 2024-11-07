@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfyamuoif65el"]
+
+[ext_resource type="Texture2D" uid="uid://c52xbhgib3bf5" path="res://arte/Sprout Lands - Sprites - Basic pack/Objects/freezer.png" id="1_fho0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bo87"]
+size = Vector2(32, 42)
+
+[node name="freezer" type="Sprite2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -4)
+texture = ExtResource("1_fho0b")
+region_filter_clip_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_0bo87")
