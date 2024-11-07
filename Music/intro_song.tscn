@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://uqs6vdvsqrv0"]
+
+[ext_resource type="AudioStream" uid="uid://biwp3tp7u0sd7" path="res://Death Contest - Intro.mp3" id="1_td6lf"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_td6lf")
+autoplay = true
