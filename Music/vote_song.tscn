@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://l4ra6bvtutgm"]
+
+[ext_resource type="AudioStream" uid="uid://scr3bb11lecm" path="res://Death-Contest-Vote.mp3" id="1_6u60j"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_6u60j")
+autoplay = true
