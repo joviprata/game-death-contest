@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctam6onayev55"]
+
+[ext_resource type="Texture2D" uid="uid://b8iwpvrjpdp81" path="res://arte/Sprout Lands - Sprites - Basic pack/Objects/puddle.png" id="1_1lfkr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgc04"]
+radius = 347.429
+
+[node name="puddle" type="Sprite2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.0230263, 0.022204)
+texture = ExtResource("1_1lfkr")
+region_filter_clip_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-5.17709e-05, -3.2213e-05)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_cgc04")

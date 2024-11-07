@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4salqpxpi3ss"]
+
+[ext_resource type="Texture2D" uid="uid://banavh4jxm1ru" path="res://arte/Sprout Lands - Sprites - Basic pack/Objects/mirror.png" id="1_317nd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bo87"]
+size = Vector2(16, 28)
+
+[node name="flat" type="Sprite2D"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -4)
+texture = ExtResource("1_317nd")
+region_filter_clip_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_0bo87")
