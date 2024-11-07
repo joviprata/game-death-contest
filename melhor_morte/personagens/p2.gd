@@ -14,6 +14,7 @@ extends CharacterBody2D
 
 @export var inv: Inv
 @onready var sprite = $Sprite2D
+@export var id_controller = 1
 
 var on_interaction_area = false
 var morto = false
@@ -29,7 +30,6 @@ func _physics_process(_delta: float) -> void:
 	)
 	if not morto:
 		update_animation_parameters(input_direction)
-		
 		velocity = input_direction * move_speed
 		
 		move_and_slide()

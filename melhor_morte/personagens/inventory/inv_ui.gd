@@ -6,7 +6,7 @@ func _ready():
 	close()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("inventory"):
+	if Input.is_action_just_pressed("inventory_p1"):
 		if is_open:
 			close()
 		else:

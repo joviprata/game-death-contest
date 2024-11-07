@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://ba8vrexv3m2k7"]
+[gd_scene load_steps=16 format=4 uid="uid://cmq3ahmxpvd7m"]
 
 [ext_resource type="PackedScene" uid="uid://dsie3gcn2wb4t" path="res://personagens/main_character.tscn" id="1_4melu"]
 [ext_resource type="Texture2D" uid="uid://220gfemy2v5u" path="res://arte/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="2_7senf"]
 [ext_resource type="Texture2D" uid="uid://tosj6futauen" path="res://arte/Sprout Lands - Sprites - Basic pack/Tilesets/floorassets/sprite5.png" id="2_24hcq"]
 [ext_resource type="Texture2D" uid="uid://b2fnfh1qhbswu" path="res://arte/Sprout Lands - Sprites - Basic pack/Tilesets/floorassets/tileset 1.png" id="3_5beul"]
-[ext_resource type="PackedScene" uid="uid://b2v6r33215ofa" path="res://interaction/interaction_area/interaction_area.tscn" id="3_u0id5"]
 [ext_resource type="PackedScene" uid="uid://cyqvur8mo5t44" path="res://objetos/frutas.tscn" id="4_d0ihi"]
 [ext_resource type="PackedScene" uid="uid://dfyamuoif65el" path="res://objetos/freezer.tscn" id="5_8v4p2"]
 [ext_resource type="PackedScene" uid="uid://djiqf8lmv24kg" path="res://objetos/prateleira.tscn" id="5_73c42"]
 [ext_resource type="PackedScene" uid="uid://tg5dgwey38xd" path="res://objetos/flat.tscn" id="8_5iotc"]
 [ext_resource type="PackedScene" uid="uid://bqnh2gwupiuus" path="res://objetos/prateleiraMad.tscn" id="8_mplxj"]
+[ext_resource type="PackedScene" uid="uid://db4iy5bgegtkp" path="res://personagens/p2.tscn" id="9_3p2bq"]
+[ext_resource type="PackedScene" uid="uid://8lj86aeirayw" path="res://personagens/p3.tscn" id="10_dit73"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1lch"]
 texture = ExtResource("2_7senf")
@@ -279,15 +280,18 @@ position = Vector2(402, 243)
 position = Vector2(482, 243)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(146, 123)
+position = Vector2(346, 229)
+offset = Vector2(10, 0)
+zoom = Vector2(1.5, 1.5)
 
-[node name="InteractionArea" parent="." instance=ExtResource("3_u0id5")]
-position = Vector2(223, 284)
+[node name="p2" parent="." instance=ExtResource("9_3p2bq")]
+position = Vector2(152, 301)
+
+[node name="p3" parent="." instance=ExtResource("10_dit73")]
+position = Vector2(111, 215)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_4melu")]
-position = Vector2(146, 123)
-collision_mask = 2
+position = Vector2(145, 124)
 starting_direction = Vector2(0, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
-remote_path = NodePath("../../Camera2D")

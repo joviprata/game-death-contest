@@ -14,19 +14,19 @@ extends CharacterBody2D
 
 @export var inv: Inv
 @onready var sprite = $Sprite2D
-@export var id_controller =0
+@export var id_controller = 2
 
 var on_interaction_area = false
 var morto = false
-var trocou = false
+
 func _ready():
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta: float) -> void:
 	# Add the gravity.
 	var input_direction = Vector2(
-		Input.get_action_strength("right_p1") - Input.get_action_strength("left_p1"),
-		Input.get_action_strength("down_p1") - Input.get_action_strength("up_p1")
+		Input.get_action_strength("right_p3") - Input.get_action_strength("left_p3"),
+		Input.get_action_strength("down_p3") - Input.get_action_strength("up_p3")
 	)
 	if not morto:
 		update_animation_parameters(input_direction)
@@ -34,8 +34,6 @@ func _physics_process(_delta: float) -> void:
 		
 		move_and_slide()
 		pick_new_state()
-	
-	
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input != Vector2.ZERO):
@@ -49,7 +47,7 @@ func pick_new_state():
 		state_machine.travel("Idle", false)
 
 func _process(_delta: float) -> void:
-	if Input.get_action_strength("interaction_p1") && on_interaction_area:
+	if Input.get_action_strength("interaction_p3") && on_interaction_area:
 		sprite.flip_v = -1
 		morto = true
 		animation_tree.active = false

@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://db4iy5bgegtkp"]
+[gd_scene load_steps=31 format=3 uid="uid://8lj86aeirayw"]
 
-[ext_resource type="Script" path="res://personagens/p2.gd" id="1_g83q6"]
-[ext_resource type="Texture2D" uid="uid://t3l5bbcp70ei" path="res://personagens/Player 2 Spritesheet.png" id="3_tuvlr"]
-[ext_resource type="PackedScene" uid="uid://cypjd0ebv1awr" path="res://personagens/inventory/inv_ui.tscn" id="4_xjf3x"]
+[ext_resource type="Script" path="res://personagens/p3.gd" id="1_jwl4p"]
+[ext_resource type="Texture2D" uid="uid://cgga58yr3tvff" path="res://personagens/Player 3 Spritesheet.png" id="2_st1e4"]
+[ext_resource type="PackedScene" uid="uid://cypjd0ebv1awr" path="res://personagens/inventory/inv_ui.tscn" id="3_vgmau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jl56"]
 size = Vector2(14, 11)
@@ -244,11 +244,11 @@ radius = 28.0
 [node name="p2" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_g83q6")
+script = ExtResource("1_jwl4p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_tuvlr")
+texture = ExtResource("2_st1e4")
 hframes = 4
 vframes = 4
 frame = 4
@@ -293,7 +293,7 @@ grow_horizontal = 2
 scale = Vector2(0.6, 0.6)
 horizontal_alignment = 1
 
-[node name="Inv_UI" parent="." instance=ExtResource("4_xjf3x")]
+[node name="Inv_UI" parent="." instance=ExtResource("3_vgmau")]
 offset_left = -54.0
 offset_top = -133.0
 offset_right = -14.0
