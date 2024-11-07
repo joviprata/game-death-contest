@@ -1,9 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://dsie3gcn2wb4t"]
+[gd_scene load_steps=31 format=3 uid="uid://b58vknglcgr2"]
 
-[ext_resource type="Script" path="res://personagens/main_character.gd" id="1_5lhcj"]
-[ext_resource type="Texture2D" uid="uid://co5thcbuo0fuk" path="res://personagens/Player 1 Spritesheet.png" id="2_3dsva"]
-[ext_resource type="Resource" uid="uid://ctl8c10sxrt8m" path="res://personagens/inventory_mainCharacter.tres" id="2_eu1iq"]
-[ext_resource type="PackedScene" uid="uid://cypjd0ebv1awr" path="res://personagens/inventory/inv_ui.tscn" id="4_x6ymr"]
+[ext_resource type="Script" path="res://personagens/p2.gd" id="1_g83q6"]
+[ext_resource type="Texture2D" uid="uid://t3l5bbcp70ei" path="res://personagens/Player 2 Spritesheet.png" id="3_tuvlr"]
+[ext_resource type="PackedScene" uid="uid://cypjd0ebv1awr" path="res://personagens/inventory/inv_ui.tscn" id="4_xjf3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jl56"]
 size = Vector2(14, 11)
@@ -242,13 +241,12 @@ class_name InteractionArea
 [sub_resource type="CircleShape2D" id="CircleShape2D_uqv1m"]
 radius = 28.0
 
-[node name="p1" type="CharacterBody2D"]
-script = ExtResource("1_5lhcj")
-inv = ExtResource("2_eu1iq")
+[node name="p2" type="CharacterBody2D"]
+script = ExtResource("1_g83q6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_3dsva")
+texture = ExtResource("3_tuvlr")
 hframes = 4
 vframes = 4
 frame = 4
@@ -293,7 +291,7 @@ grow_horizontal = 2
 scale = Vector2(0.6, 0.6)
 horizontal_alignment = 1
 
-[node name="Inv_UI" parent="." instance=ExtResource("4_x6ymr")]
+[node name="Inv_UI" parent="." instance=ExtResource("4_xjf3x")]
 offset_left = -54.0
 offset_top = -133.0
 offset_right = -14.0

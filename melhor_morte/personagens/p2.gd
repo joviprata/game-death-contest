@@ -24,8 +24,8 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	# Add the gravity.
 	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
+		Input.get_action_strength("right_p2") - Input.get_action_strength("left_p2"),
+		Input.get_action_strength("down_p2") - Input.get_action_strength("up_p2")
 	)
 	if not morto:
 		update_animation_parameters(input_direction)
@@ -46,8 +46,8 @@ func pick_new_state():
 	else:
 		state_machine.travel("Idle", false)
 
-func _process(delta: float) -> void:
-	if Input.get_action_strength("interaction") && on_interaction_area:
+func _process(_delta: float) -> void:
+	if Input.get_action_strength("interaction_p2") && on_interaction_area:
 		sprite.flip_v = -1
 		morto = true
 		animation_tree.active = false
@@ -56,15 +56,13 @@ func _process(delta: float) -> void:
 
 # funções de interação
 func _on_interaction_area_area_entered(area: Area2D) -> void:
-	all_interactions.insert(0, area) 
-	print("entrei")
+	all_interactions.insert(0, area)
 	on_interaction_area = true
 	update_interactions()
 
 
 func _on_interaction_area_area_exited(area: Area2D) -> void:
-	all_interactions.erase(area) 
-	print("sai")
+	all_interactions.erase(area)
 	on_interaction_area = false
 	update_interactions()
 
@@ -73,6 +71,5 @@ func _on_interaction_area_area_exited(area: Area2D) -> void:
 func update_interactions():
 	if all_interactions:
 		interact_label.text = all_interactions[0].interact_label
-		
 	else:
 		interact_label.text = ""

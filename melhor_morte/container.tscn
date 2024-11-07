@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7fjlpqahaaa0"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_odxri"]
+[ext_resource type="PackedScene" uid="uid://ba8vrexv3m2k7" path="res://game_level.tscn" id="2_mo6as"]
+
+[node name="Container" type="Node"]
+script = ExtResource("1_odxri")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Node2D" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_mo6as")]
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
